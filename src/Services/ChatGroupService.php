@@ -2,26 +2,22 @@
 
 namespace Fintech\Chat\Services;
 
-
 use Fintech\Chat\Interfaces\ChatGroupRepository;
 
 /**
  * Class ChatGroupService
- * @package Fintech\Chat\Services
- *
  */
 class ChatGroupService
 {
     /**
      * ChatGroupService constructor.
-     * @param ChatGroupRepository $chatGroupRepository
      */
-    public function __construct(ChatGroupRepository $chatGroupRepository) {
+    public function __construct(ChatGroupRepository $chatGroupRepository)
+    {
         $this->chatGroupRepository = $chatGroupRepository;
     }
 
     /**
-     * @param array $filters
      * @return mixed
      */
     public function list(array $filters = [])

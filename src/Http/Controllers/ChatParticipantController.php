@@ -1,34 +1,33 @@
 <?php
 
 namespace Fintech\Chat\Http\Controllers;
+
 use Exception;
-use Fintech\Core\Exceptions\StoreOperationException;
-use Fintech\Core\Exceptions\UpdateOperationException;
-use Fintech\Core\Exceptions\DeleteOperationException;
-use Fintech\Core\Exceptions\RestoreOperationException;
-use Fintech\Core\Traits\ApiResponseTrait;
 use Fintech\Chat\Facades\Chat;
-use Fintech\Chat\Http\Resources\ChatParticipantResource;
-use Fintech\Chat\Http\Resources\ChatParticipantCollection;
 use Fintech\Chat\Http\Requests\ImportChatParticipantRequest;
+use Fintech\Chat\Http\Requests\IndexChatParticipantRequest;
 use Fintech\Chat\Http\Requests\StoreChatParticipantRequest;
 use Fintech\Chat\Http\Requests\UpdateChatParticipantRequest;
-use Fintech\Chat\Http\Requests\IndexChatParticipantRequest;
+use Fintech\Chat\Http\Resources\ChatParticipantCollection;
+use Fintech\Chat\Http\Resources\ChatParticipantResource;
+use Fintech\Core\Exceptions\DeleteOperationException;
+use Fintech\Core\Exceptions\RestoreOperationException;
+use Fintech\Core\Exceptions\StoreOperationException;
+use Fintech\Core\Exceptions\UpdateOperationException;
+use Fintech\Core\Traits\ApiResponseTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
 /**
  * Class ChatParticipantController
- * @package Fintech\Chat\Http\Controllers
  *
  * @lrd:start
  * This class handle create, display, update, delete & restore
  * operation related to ChatParticipant
- * @lrd:end
  *
+ * @lrd:end
  */
-
 class ChatParticipantController extends Controller
 {
     use ApiResponseTrait;
@@ -38,10 +37,8 @@ class ChatParticipantController extends Controller
      * Return a listing of the *ChatParticipant* resource as collection.
      *
      * *```paginate=false``` returns all resource as list not pagination*
-     * @lrd:end
      *
-     * @param IndexChatParticipantRequest $request
-     * @return ChatParticipantCollection|JsonResponse
+     * @lrd:end
      */
     public function index(IndexChatParticipantRequest $request): ChatParticipantCollection|JsonResponse
     {
@@ -61,10 +58,9 @@ class ChatParticipantController extends Controller
     /**
      * @lrd:start
      * Create a new *ChatParticipant* resource in storage.
+     *
      * @lrd:end
      *
-     * @param StoreChatParticipantRequest $request
-     * @return JsonResponse
      * @throws StoreOperationException
      */
     public function store(StoreChatParticipantRequest $request): JsonResponse
@@ -74,14 +70,14 @@ class ChatParticipantController extends Controller
 
             $chatParticipant = Chat::chatParticipant()->create($inputs);
 
-            if (!$chatParticipant) {
+            if (! $chatParticipant) {
                 throw (new StoreOperationException)->setModel(config('fintech.chat.chat_participant_model'));
             }
 
             return $this->created([
                 'message' => __('core::messages.resource.created', ['model' => 'Chat Participant']),
-                'id' => $chatParticipant->id
-             ]);
+                'id' => $chatParticipant->id,
+            ]);
 
         } catch (Exception $exception) {
 
@@ -92,10 +88,9 @@ class ChatParticipantController extends Controller
     /**
      * @lrd:start
      * Return a specified *ChatParticipant* resource found by id.
+     *
      * @lrd:end
      *
-     * @param string|int $id
-     * @return ChatParticipantResource|JsonResponse
      * @throws ModelNotFoundException
      */
     public function show(string|int $id): ChatParticipantResource|JsonResponse
@@ -104,7 +99,7 @@ class ChatParticipantController extends Controller
 
             $chatParticipant = Chat::chatParticipant()->find($id);
 
-            if (!$chatParticipant) {
+            if (! $chatParticipant) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
 
@@ -123,11 +118,9 @@ class ChatParticipantController extends Controller
     /**
      * @lrd:start
      * Update a specified *ChatParticipant* resource using id.
+     *
      * @lrd:end
      *
-     * @param UpdateChatParticipantRequest $request
-     * @param string|int $id
-     * @return JsonResponse
      * @throws ModelNotFoundException
      * @throws UpdateOperationException
      */
@@ -137,13 +130,13 @@ class ChatParticipantController extends Controller
 
             $chatParticipant = Chat::chatParticipant()->find($id);
 
-            if (!$chatParticipant) {
+            if (! $chatParticipant) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
 
             $inputs = $request->validated();
 
-            if (!Chat::chatParticipant()->update($id, $inputs)) {
+            if (! Chat::chatParticipant()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
@@ -163,10 +156,11 @@ class ChatParticipantController extends Controller
     /**
      * @lrd:start
      * Soft delete a specified *ChatParticipant* resource using id.
+     *
      * @lrd:end
      *
-     * @param string|int $id
      * @return JsonResponse
+     *
      * @throws ModelNotFoundException
      * @throws DeleteOperationException
      */
@@ -176,11 +170,11 @@ class ChatParticipantController extends Controller
 
             $chatParticipant = Chat::chatParticipant()->find($id);
 
-            if (!$chatParticipant) {
+            if (! $chatParticipant) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
 
-            if (!Chat::chatParticipant()->destroy($id)) {
+            if (! Chat::chatParticipant()->destroy($id)) {
 
                 throw (new DeleteOperationException())->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
@@ -201,9 +195,9 @@ class ChatParticipantController extends Controller
      * @lrd:start
      * Restore the specified *ChatParticipant* resource from trash.
      * ** ```Soft Delete``` needs to enabled to use this feature**
+     *
      * @lrd:end
      *
-     * @param string|int $id
      * @return JsonResponse
      */
     public function restore(string|int $id)
@@ -212,11 +206,11 @@ class ChatParticipantController extends Controller
 
             $chatParticipant = Chat::chatParticipant()->find($id, true);
 
-            if (!$chatParticipant) {
+            if (! $chatParticipant) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
 
-            if (!Chat::chatParticipant()->restore($id)) {
+            if (! Chat::chatParticipant()->restore($id)) {
 
                 throw (new RestoreOperationException())->setModel(config('fintech.chat.chat_participant_model'), $id);
             }
@@ -239,9 +233,6 @@ class ChatParticipantController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
-     *
-     * @param IndexChatParticipantRequest $request
-     * @return JsonResponse
      */
     public function export(IndexChatParticipantRequest $request): JsonResponse
     {
@@ -265,7 +256,6 @@ class ChatParticipantController extends Controller
      *
      * @lrd:end
      *
-     * @param ImportChatParticipantRequest $request
      * @return ChatParticipantCollection|JsonResponse
      */
     public function import(ImportChatParticipantRequest $request): JsonResponse

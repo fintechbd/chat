@@ -24,7 +24,6 @@ return [
 
     'root_prefix' => 'test/',
 
-    
     /*
     |--------------------------------------------------------------------------
     | ChatGroup Model
@@ -34,7 +33,6 @@ return [
     */
     'chat_group_model' => \Fintech\Chat\Models\ChatGroup::class,
 
-    
     /*
     |--------------------------------------------------------------------------
     | ChatParticipant Model
@@ -44,7 +42,6 @@ return [
     */
     'chat_participant_model' => \Fintech\Chat\Models\ChatParticipant::class,
 
-    
     /*
     |--------------------------------------------------------------------------
     | ChatMessage Model

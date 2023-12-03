@@ -2,9 +2,9 @@
 
 namespace Fintech\Chat;
 
-use Illuminate\Support\ServiceProvider;
-use Fintech\Chat\Commands\InstallCommand;
 use Fintech\Chat\Commands\ChatCommand;
+use Fintech\Chat\Commands\InstallCommand;
+use Illuminate\Support\ServiceProvider;
 
 class ChatServiceProvider extends ServiceProvider
 {

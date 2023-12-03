@@ -10,9 +10,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class ChatGroup extends Model implements HasMedia
 {
-   use AuditableTrait;
-   use SoftDeletes;
-   use InteractsWithMedia;
+    use AuditableTrait;
+    use InteractsWithMedia;
+    use SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------

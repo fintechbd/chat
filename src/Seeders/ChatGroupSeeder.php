@@ -2,8 +2,8 @@
 
 namespace Fintech\Chat\Seeders;
 
-use Illuminate\Database\Seeder;
 use Fintech\Chat\Facades\Chat;
+use Illuminate\Database\Seeder;
 
 class ChatGroupSeeder extends Seeder
 {
@@ -24,6 +24,6 @@ class ChatGroupSeeder extends Seeder
 
     private function data()
     {
-        return array();
+        return [];
     }
 }
