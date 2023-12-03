@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('chart_group_id');
             $table->morphs('model');
+            $table->string('color', 10)->nullable();
             $table->boolean('enabled')->default(true);
             $table->json('chat_participant_data')->nullable();
             $table->foreignId('creator_id')->nullable();

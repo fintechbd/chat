@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('chat_group_id');
             $table->foreignId('chat_participant_id');
             $table->longText('content');
+            $table->timestamp('seen_at')->nullable();
             $table->json('chat_messages_data')->nullable();
             $table->foreignId('creator_id')->nullable();
             $table->foreignId('editor_id')->nullable();
