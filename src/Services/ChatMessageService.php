@@ -2,26 +2,22 @@
 
 namespace Fintech\Chat\Services;
 
-
 use Fintech\Chat\Interfaces\ChatMessageRepository;
 
 /**
  * Class ChatMessageService
- * @package Fintech\Chat\Services
- *
  */
 class ChatMessageService
 {
     /**
      * ChatMessageService constructor.
-     * @param ChatMessageRepository $chatMessageRepository
      */
-    public function __construct(ChatMessageRepository $chatMessageRepository) {
+    public function __construct(ChatMessageRepository $chatMessageRepository)
+    {
         $this->chatMessageRepository = $chatMessageRepository;
     }
 
     /**
-     * @param array $filters
      * @return mixed
      */
     public function list(array $filters = [])

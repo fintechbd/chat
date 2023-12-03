@@ -1,34 +1,33 @@
 <?php
 
 namespace Fintech\Chat\Http\Controllers;
+
 use Exception;
-use Fintech\Core\Exceptions\StoreOperationException;
-use Fintech\Core\Exceptions\UpdateOperationException;
-use Fintech\Core\Exceptions\DeleteOperationException;
-use Fintech\Core\Exceptions\RestoreOperationException;
-use Fintech\Core\Traits\ApiResponseTrait;
 use Fintech\Chat\Facades\Chat;
-use Fintech\Chat\Http\Resources\ChatGroupResource;
-use Fintech\Chat\Http\Resources\ChatGroupCollection;
 use Fintech\Chat\Http\Requests\ImportChatGroupRequest;
+use Fintech\Chat\Http\Requests\IndexChatGroupRequest;
 use Fintech\Chat\Http\Requests\StoreChatGroupRequest;
 use Fintech\Chat\Http\Requests\UpdateChatGroupRequest;
-use Fintech\Chat\Http\Requests\IndexChatGroupRequest;
+use Fintech\Chat\Http\Resources\ChatGroupCollection;
+use Fintech\Chat\Http\Resources\ChatGroupResource;
+use Fintech\Core\Exceptions\DeleteOperationException;
+use Fintech\Core\Exceptions\RestoreOperationException;
+use Fintech\Core\Exceptions\StoreOperationException;
+use Fintech\Core\Exceptions\UpdateOperationException;
+use Fintech\Core\Traits\ApiResponseTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
 /**
  * Class ChatGroupController
- * @package Fintech\Chat\Http\Controllers
  *
  * @lrd:start
  * This class handle create, display, update, delete & restore
  * operation related to ChatGroup
- * @lrd:end
  *
+ * @lrd:end
  */
-
 class ChatGroupController extends Controller
 {
     use ApiResponseTrait;
@@ -38,10 +37,8 @@ class ChatGroupController extends Controller
      * Return a listing of the *ChatGroup* resource as collection.
      *
      * *```paginate=false``` returns all resource as list not pagination*
-     * @lrd:end
      *
-     * @param IndexChatGroupRequest $request
-     * @return ChatGroupCollection|JsonResponse
+     * @lrd:end
      */
     public function index(IndexChatGroupRequest $request): ChatGroupCollection|JsonResponse
     {
@@ -61,10 +58,9 @@ class ChatGroupController extends Controller
     /**
      * @lrd:start
      * Create a new *ChatGroup* resource in storage.
+     *
      * @lrd:end
      *
-     * @param StoreChatGroupRequest $request
-     * @return JsonResponse
      * @throws StoreOperationException
      */
     public function store(StoreChatGroupRequest $request): JsonResponse
@@ -74,14 +70,14 @@ class ChatGroupController extends Controller
 
             $chatGroup = Chat::chatGroup()->create($inputs);
 
-            if (!$chatGroup) {
+            if (! $chatGroup) {
                 throw (new StoreOperationException)->setModel(config('fintech.chat.chat_group_model'));
             }
 
             return $this->created([
                 'message' => __('core::messages.resource.created', ['model' => 'Chat Group']),
-                'id' => $chatGroup->id
-             ]);
+                'id' => $chatGroup->id,
+            ]);
 
         } catch (Exception $exception) {
 
@@ -92,10 +88,9 @@ class ChatGroupController extends Controller
     /**
      * @lrd:start
      * Return a specified *ChatGroup* resource found by id.
+     *
      * @lrd:end
      *
-     * @param string|int $id
-     * @return ChatGroupResource|JsonResponse
      * @throws ModelNotFoundException
      */
     public function show(string|int $id): ChatGroupResource|JsonResponse
@@ -104,7 +99,7 @@ class ChatGroupController extends Controller
 
             $chatGroup = Chat::chatGroup()->find($id);
 
-            if (!$chatGroup) {
+            if (! $chatGroup) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_group_model'), $id);
             }
 
@@ -123,11 +118,9 @@ class ChatGroupController extends Controller
     /**
      * @lrd:start
      * Update a specified *ChatGroup* resource using id.
+     *
      * @lrd:end
      *
-     * @param UpdateChatGroupRequest $request
-     * @param string|int $id
-     * @return JsonResponse
      * @throws ModelNotFoundException
      * @throws UpdateOperationException
      */
@@ -137,13 +130,13 @@ class ChatGroupController extends Controller
 
             $chatGroup = Chat::chatGroup()->find($id);
 
-            if (!$chatGroup) {
+            if (! $chatGroup) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_group_model'), $id);
             }
 
             $inputs = $request->validated();
 
-            if (!Chat::chatGroup()->update($id, $inputs)) {
+            if (! Chat::chatGroup()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.chat.chat_group_model'), $id);
             }
@@ -163,10 +156,11 @@ class ChatGroupController extends Controller
     /**
      * @lrd:start
      * Soft delete a specified *ChatGroup* resource using id.
+     *
      * @lrd:end
      *
-     * @param string|int $id
      * @return JsonResponse
+     *
      * @throws ModelNotFoundException
      * @throws DeleteOperationException
      */
@@ -176,11 +170,11 @@ class ChatGroupController extends Controller
 
             $chatGroup = Chat::chatGroup()->find($id);
 
-            if (!$chatGroup) {
+            if (! $chatGroup) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_group_model'), $id);
             }
 
-            if (!Chat::chatGroup()->destroy($id)) {
+            if (! Chat::chatGroup()->destroy($id)) {
 
                 throw (new DeleteOperationException())->setModel(config('fintech.chat.chat_group_model'), $id);
             }
@@ -201,9 +195,9 @@ class ChatGroupController extends Controller
      * @lrd:start
      * Restore the specified *ChatGroup* resource from trash.
      * ** ```Soft Delete``` needs to enabled to use this feature**
+     *
      * @lrd:end
      *
-     * @param string|int $id
      * @return JsonResponse
      */
     public function restore(string|int $id)
@@ -212,11 +206,11 @@ class ChatGroupController extends Controller
 
             $chatGroup = Chat::chatGroup()->find($id, true);
 
-            if (!$chatGroup) {
+            if (! $chatGroup) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_group_model'), $id);
             }
 
-            if (!Chat::chatGroup()->restore($id)) {
+            if (! Chat::chatGroup()->restore($id)) {
 
                 throw (new RestoreOperationException())->setModel(config('fintech.chat.chat_group_model'), $id);
             }
@@ -239,9 +233,6 @@ class ChatGroupController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
-     *
-     * @param IndexChatGroupRequest $request
-     * @return JsonResponse
      */
     public function export(IndexChatGroupRequest $request): JsonResponse
     {
@@ -265,7 +256,6 @@ class ChatGroupController extends Controller
      *
      * @lrd:end
      *
-     * @param ImportChatGroupRequest $request
      * @return ChatGroupCollection|JsonResponse
      */
     public function import(ImportChatGroupRequest $request): JsonResponse

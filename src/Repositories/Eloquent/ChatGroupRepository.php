@@ -2,8 +2,8 @@
 
 namespace Fintech\Chat\Repositories\Eloquent;
 
-use Fintech\Core\Repositories\EloquentRepository;
 use Fintech\Chat\Interfaces\ChatGroupRepository as InterfacesChatGroupRepository;
+use Fintech\Core\Repositories\EloquentRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -11,19 +11,18 @@ use InvalidArgumentException;
 
 /**
  * Class ChatGroupRepository
- * @package Fintech\Chat\Repositories\Eloquent
  */
 class ChatGroupRepository extends EloquentRepository implements InterfacesChatGroupRepository
 {
     public function __construct()
     {
-       $model = app(config('fintech.chat.chat_group_model', \Fintech\Chat\Models\ChatGroup::class));
+        $model = app(config('fintech.chat.chat_group_model', \Fintech\Chat\Models\ChatGroup::class));
 
-       if (!$model instanceof Model) {
-           throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
-       }
+        if (! $model instanceof Model) {
+            throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
+        }
 
-       $this->model = $model;
+        $this->model = $model;
     }
 
     /**
