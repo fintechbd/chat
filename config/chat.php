@@ -24,6 +24,36 @@ return [
 
     'root_prefix' => 'test/',
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | ChatGroup Model
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used to across system where model is needed
+    */
+    'chat_group_model' => \Fintech\Chat\Models\ChatGroup::class,
+
+    
+    /*
+    |--------------------------------------------------------------------------
+    | ChatParticipant Model
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used to across system where model is needed
+    */
+    'chat_participant_model' => \Fintech\Chat\Models\ChatParticipant::class,
+
+    
+    /*
+    |--------------------------------------------------------------------------
+    | ChatMessage Model
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used to across system where model is needed
+    */
+    'chat_message_model' => \Fintech\Chat\Models\ChatMessage::class,
+
     //** Model Config Point Do not Remove **//
 
     /*
@@ -35,6 +65,12 @@ return [
     */
 
     'repositories' => [
+        \Fintech\Chat\Interfaces\ChatGroupRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatGroupRepository::class,
+
+        \Fintech\Chat\Interfaces\ChatParticipantRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatParticipantRepository::class,
+
+        \Fintech\Chat\Interfaces\ChatMessageRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatMessageRepository::class,
+
         //** Repository Binding Config Point Do not Remove **//
     ],
 
