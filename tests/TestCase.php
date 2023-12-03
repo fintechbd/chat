@@ -2,9 +2,9 @@
 
 namespace Fintech\Chat\Tests;
 
+use Fintech\Chat\ChatServiceProvider;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Fintech\Chat\ChatServiceProvider;
 
 class TestCase extends Orchestra
 {
