@@ -3,6 +3,7 @@
 namespace Fintech\Chat\Repositories\Mongodb;
 
 use Fintech\Chat\Interfaces\ChatParticipantRepository as InterfacesChatParticipantRepository;
+use Fintech\Chat\Models\ChatParticipant;
 use Fintech\Core\Repositories\MongodbRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,9 +17,9 @@ class ChatParticipantRepository extends MongodbRepository implements InterfacesC
 {
     public function __construct()
     {
-        $model = app(config('fintech.chat.chat_participant_model', \Fintech\Chat\Models\ChatParticipant::class));
+        $model = app(config('fintech.chat.chat_participant_model', ChatParticipant::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
         }
 
@@ -36,7 +37,7 @@ class ChatParticipantRepository extends MongodbRepository implements InterfacesC
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {

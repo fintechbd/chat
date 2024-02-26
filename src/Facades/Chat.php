@@ -2,12 +2,15 @@
 
 namespace Fintech\Chat\Facades;
 
+use Fintech\Chat\Services\ChatGroupService;
+use Fintech\Chat\Services\ChatMessageService;
+use Fintech\Chat\Services\ChatParticipantService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Fintech\Chat\Services\ChatGroupService chatGroup()
- * @method static \Fintech\Chat\Services\ChatParticipantService chatParticipant()
- * @method static \Fintech\Chat\Services\ChatMessageService chatMessage()
+ * @method static ChatGroupService chatGroup()
+ * @method static ChatParticipantService chatParticipant()
+ * @method static ChatMessageService chatMessage()
  * // Crud Service Method Point Do not Remove //
  *
  * @see \Fintech\Chat\Chat

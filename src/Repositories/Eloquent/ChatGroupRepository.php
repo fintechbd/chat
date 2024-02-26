@@ -3,10 +3,10 @@
 namespace Fintech\Chat\Repositories\Eloquent;
 
 use Fintech\Chat\Interfaces\ChatGroupRepository as InterfacesChatGroupRepository;
+use Fintech\Chat\Models\ChatGroup;
 use Fintech\Core\Repositories\EloquentRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 
 /**
@@ -16,9 +16,9 @@ class ChatGroupRepository extends EloquentRepository implements InterfacesChatGr
 {
     public function __construct()
     {
-        $model = app(config('fintech.chat.chat_group_model', \Fintech\Chat\Models\ChatGroup::class));
+        $model = app(config('fintech.chat.chat_group_model', ChatGroup::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
         }
 
@@ -36,7 +36,7 @@ class ChatGroupRepository extends EloquentRepository implements InterfacesChatGr
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {

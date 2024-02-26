@@ -3,6 +3,7 @@
 namespace Fintech\Chat\Repositories\Mongodb;
 
 use Fintech\Chat\Interfaces\ChatGroupRepository as InterfacesChatGroupRepository;
+use Fintech\Chat\Models\ChatGroup;
 use Fintech\Core\Repositories\MongodbRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,9 +17,9 @@ class ChatGroupRepository extends MongodbRepository implements InterfacesChatGro
 {
     public function __construct()
     {
-        $model = app(config('fintech.chat.chat_group_model', \Fintech\Chat\Models\ChatGroup::class));
+        $model = app(config('fintech.chat.chat_group_model', ChatGroup::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
         }
 
@@ -36,7 +37,7 @@ class ChatGroupRepository extends MongodbRepository implements InterfacesChatGro
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {

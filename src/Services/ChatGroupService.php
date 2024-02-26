@@ -17,20 +17,6 @@ class ChatGroupService
         $this->chatGroupRepository = $chatGroupRepository;
     }
 
-    /**
-     * @return mixed
-     */
-    public function list(array $filters = [])
-    {
-        return $this->chatGroupRepository->list($filters);
-
-    }
-
-    public function create(array $inputs = [])
-    {
-        return $this->chatGroupRepository->create($inputs);
-    }
-
     public function find($id, $onlyTrashed = false)
     {
         return $this->chatGroupRepository->find($id, $onlyTrashed);
@@ -56,8 +42,22 @@ class ChatGroupService
         return $this->chatGroupRepository->list($filters);
     }
 
+    /**
+     * @return mixed
+     */
+    public function list(array $filters = [])
+    {
+        return $this->chatGroupRepository->list($filters);
+
+    }
+
     public function import(array $filters)
     {
         return $this->chatGroupRepository->create($filters);
+    }
+
+    public function create(array $inputs = [])
+    {
+        return $this->chatGroupRepository->create($inputs);
     }
 }

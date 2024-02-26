@@ -2,30 +2,34 @@
 
 namespace Fintech\Chat;
 
+use Fintech\Chat\Services\ChatGroupService;
+use Fintech\Chat\Services\ChatMessageService;
+use Fintech\Chat\Services\ChatParticipantService;
+
 class Chat
 {
     /**
-     * @return \Fintech\Chat\Services\ChatGroupService
+     * @return ChatGroupService
      */
     public function chatGroup()
     {
-        return app(\Fintech\Chat\Services\ChatGroupService::class);
+        return app(ChatGroupService::class);
     }
 
     /**
-     * @return \Fintech\Chat\Services\ChatParticipantService
+     * @return ChatParticipantService
      */
     public function chatParticipant()
     {
-        return app(\Fintech\Chat\Services\ChatParticipantService::class);
+        return app(ChatParticipantService::class);
     }
 
     /**
-     * @return \Fintech\Chat\Services\ChatMessageService
+     * @return ChatMessageService
      */
     public function chatMessage()
     {
-        return app(\Fintech\Chat\Services\ChatMessageService::class);
+        return app(ChatMessageService::class);
     }
 
     //** Crud Service Method Point Do not Remove **//

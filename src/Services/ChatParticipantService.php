@@ -17,20 +17,6 @@ class ChatParticipantService
         $this->chatParticipantRepository = $chatParticipantRepository;
     }
 
-    /**
-     * @return mixed
-     */
-    public function list(array $filters = [])
-    {
-        return $this->chatParticipantRepository->list($filters);
-
-    }
-
-    public function create(array $inputs = [])
-    {
-        return $this->chatParticipantRepository->create($inputs);
-    }
-
     public function find($id, $onlyTrashed = false)
     {
         return $this->chatParticipantRepository->find($id, $onlyTrashed);
@@ -56,8 +42,22 @@ class ChatParticipantService
         return $this->chatParticipantRepository->list($filters);
     }
 
+    /**
+     * @return mixed
+     */
+    public function list(array $filters = [])
+    {
+        return $this->chatParticipantRepository->list($filters);
+
+    }
+
     public function import(array $filters)
     {
         return $this->chatParticipantRepository->create($filters);
+    }
+
+    public function create(array $inputs = [])
+    {
+        return $this->chatParticipantRepository->create($inputs);
     }
 }

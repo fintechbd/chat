@@ -1,6 +1,13 @@
 <?php
 
 // config for Fintech/Chat
+use Fintech\Chat\Models\ChatGroup;
+use Fintech\Chat\Models\ChatMessage;
+use Fintech\Chat\Models\ChatParticipant;
+use Fintech\Chat\Repositories\Eloquent\ChatGroupRepository;
+use Fintech\Chat\Repositories\Eloquent\ChatMessageRepository;
+use Fintech\Chat\Repositories\Eloquent\ChatParticipantRepository;
+
 return [
 
     /*
@@ -31,7 +38,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'chat_group_model' => \Fintech\Chat\Models\ChatGroup::class,
+    'chat_group_model' => ChatGroup::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +47,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'chat_participant_model' => \Fintech\Chat\Models\ChatParticipant::class,
+    'chat_participant_model' => ChatParticipant::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +56,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'chat_message_model' => \Fintech\Chat\Models\ChatMessage::class,
+    'chat_message_model' => ChatMessage::class,
 
     //** Model Config Point Do not Remove **//
 
@@ -62,11 +69,11 @@ return [
     */
 
     'repositories' => [
-        \Fintech\Chat\Interfaces\ChatGroupRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatGroupRepository::class,
+        \Fintech\Chat\Interfaces\ChatGroupRepository::class => ChatGroupRepository::class,
 
-        \Fintech\Chat\Interfaces\ChatParticipantRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatParticipantRepository::class,
+        \Fintech\Chat\Interfaces\ChatParticipantRepository::class => ChatParticipantRepository::class,
 
-        \Fintech\Chat\Interfaces\ChatMessageRepository::class => \Fintech\Chat\Repositories\Eloquent\ChatMessageRepository::class,
+        \Fintech\Chat\Interfaces\ChatMessageRepository::class => ChatMessageRepository::class,
 
         //** Repository Binding Config Point Do not Remove **//
     ],

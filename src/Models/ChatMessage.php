@@ -2,11 +2,11 @@
 
 namespace Fintech\Chat\Models;
 
+use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Traits\AuditableTrait;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ChatMessage extends Model
+class ChatMessage extends BaseModel
 {
     use AuditableTrait;
     use SoftDeletes;
