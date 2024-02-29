@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static ChatGroupService chatGroup()
  * @method static ChatParticipantService chatParticipant()
  * @method static ChatMessageService chatMessage()
- * // Crud Service Method Point Do not Remove //
+ *                                                 // Crud Service Method Point Do not Remove //
  *
  * @see \Fintech\Chat\Chat
  */

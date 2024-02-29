@@ -16,7 +16,7 @@ class ChatServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/chat.php', 'fintech.chat'
+            __DIR__.'/../config/chat.php', 'fintech.chat'
         );
     }
 
@@ -26,21 +26,21 @@ class ChatServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/chat.php' => config_path('fintech/chat.php'),
+            __DIR__.'/../config/chat.php' => config_path('fintech/chat.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'chat');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'chat');
 
         $this->publishes([
-            __DIR__ . '/../lang' => $this->app->langPath('vendor/chat'),
+            __DIR__.'/../lang' => $this->app->langPath('vendor/chat'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'chat');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'chat');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/chat'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/chat'),
         ]);
 
         if ($this->app->runningInConsole()) {

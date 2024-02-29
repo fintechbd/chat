@@ -70,7 +70,7 @@ class ChatMessageController extends Controller
 
             $chatMessage = Chat::chatMessage()->create($inputs);
 
-            if (!$chatMessage) {
+            if (! $chatMessage) {
                 throw (new StoreOperationException)->setModel(config('fintech.chat.chat_message_model'));
             }
 
@@ -99,7 +99,7 @@ class ChatMessageController extends Controller
 
             $chatMessage = Chat::chatMessage()->find($id);
 
-            if (!$chatMessage) {
+            if (! $chatMessage) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
@@ -130,13 +130,13 @@ class ChatMessageController extends Controller
 
             $chatMessage = Chat::chatMessage()->find($id);
 
-            if (!$chatMessage) {
+            if (! $chatMessage) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
             $inputs = $request->validated();
 
-            if (!Chat::chatMessage()->update($id, $inputs)) {
+            if (! Chat::chatMessage()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
@@ -170,11 +170,11 @@ class ChatMessageController extends Controller
 
             $chatMessage = Chat::chatMessage()->find($id);
 
-            if (!$chatMessage) {
+            if (! $chatMessage) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
-            if (!Chat::chatMessage()->destroy($id)) {
+            if (! Chat::chatMessage()->destroy($id)) {
 
                 throw (new DeleteOperationException())->setModel(config('fintech.chat.chat_message_model'), $id);
             }
@@ -206,11 +206,11 @@ class ChatMessageController extends Controller
 
             $chatMessage = Chat::chatMessage()->find($id, true);
 
-            if (!$chatMessage) {
+            if (! $chatMessage) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
-            if (!Chat::chatMessage()->restore($id)) {
+            if (! Chat::chatMessage()->restore($id)) {
 
                 throw (new RestoreOperationException())->setModel(config('fintech.chat.chat_message_model'), $id);
             }
