@@ -61,9 +61,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Fintech\\Chat\\ChatServiceProvider",
-                "Fintech\\Chat\\RepositoryServiceProvider",
-                "Fintech\\Chat\\RouteServiceProvider"
+                "Fintech\\Chat\\ChatServiceProvider"
             ],
             "aliases": {
                 "Chat": "Fintech\\Chat\\Facades\\Chat"
