@@ -4,10 +4,13 @@ namespace Fintech\Chat;
 
 use Fintech\Chat\Commands\ChatCommand;
 use Fintech\Chat\Commands\InstallCommand;
+use Fintech\Core\Traits\RegisterPackageTrait;
 use Illuminate\Support\ServiceProvider;
 
 class ChatServiceProvider extends ServiceProvider
 {
+    use RegisterPackageTrait;
+
     /**
      * Register any application services.
      *
@@ -15,6 +18,8 @@ class ChatServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->packageCode = 'chat';
+
         $this->mergeConfigFrom(
             __DIR__.'/../config/chat.php', 'fintech.chat'
         );
@@ -28,6 +33,8 @@ class ChatServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->injectOnConfig();
+
         $this->publishes([
             __DIR__.'/../config/chat.php' => config_path('fintech/chat.php'),
         ]);
