@@ -24,8 +24,8 @@ class ChatServiceProvider extends ServiceProvider
             __DIR__.'/../config/chat.php', 'fintech.chat'
         );
 
-        $this->app->register(RouteServiceProvider::class);
-        $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(\Fintech\Chat\Providers\RouteServiceProvider::class);
+        $this->app->register(\Fintech\Chat\Providers\RepositoryServiceProvider::class);
     }
 
     /**
