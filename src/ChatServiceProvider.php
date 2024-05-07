@@ -2,7 +2,6 @@
 
 namespace Fintech\Chat;
 
-use Fintech\Chat\Commands\ChatCommand;
 use Fintech\Chat\Commands\InstallCommand;
 use Fintech\Core\Traits\RegisterPackageTrait;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +23,6 @@ class ChatServiceProvider extends ServiceProvider
             __DIR__.'/../config/chat.php', 'fintech.chat'
         );
 
-        $this->app->register(\Fintech\Chat\Providers\RouteServiceProvider::class);
         $this->app->register(\Fintech\Chat\Providers\RepositoryServiceProvider::class);
     }
 
@@ -55,8 +53,7 @@ class ChatServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                InstallCommand::class,
-                ChatCommand::class,
+                InstallCommand::class
             ]);
         }
     }
