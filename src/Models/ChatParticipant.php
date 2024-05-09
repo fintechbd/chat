@@ -59,10 +59,10 @@ class ChatParticipant extends BaseModel
         $primaryKey = $this->getKey();
 
         $links = [
-            'show' => action_link(route('chat.chat-participants.show', $primaryKey), __('core::messages.action.show'), 'get'),
-            'update' => action_link(route('chat.chat-participants.update', $primaryKey), __('core::messages.action.update'), 'put'),
-            'destroy' => action_link(route('chat.chat-participants.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
-            'restore' => action_link(route('chat.chat-participants.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
+            'show' => action_link(route('chat.chat-participants.show', $primaryKey), __('restapi::messages.action.show'), 'get'),
+            'update' => action_link(route('chat.chat-participants.update', $primaryKey), __('restapi::messages.action.update'), 'put'),
+            'destroy' => action_link(route('chat.chat-participants.destroy', $primaryKey), __('restapi::messages.action.destroy'), 'delete'),
+            'restore' => action_link(route('chat.chat-participants.restore', $primaryKey), __('restapi::messages.action.restore'), 'post'),
         ];
 
         if ($this->getAttribute('deleted_at') == null) {
