@@ -24,8 +24,6 @@ class ChatGroup extends BaseModel implements HasMedia
 
     protected $guarded = ['id'];
 
-
-
     protected $casts = ['chat_group_data' => 'array', 'restored_at' => 'datetime'];
 
     protected $hidden = ['creator_id', 'editor_id', 'destroyer_id', 'restorer_id'];
