@@ -21,7 +21,7 @@ class ChatMessage extends BaseModel
 
     protected $guarded = ['id'];
 
-    protected $appends = ['links'];
+
 
     protected $casts = ['chat_message_data' => 'array', 'restored_at' => 'datetime', 'enabled' => 'bool'];
 

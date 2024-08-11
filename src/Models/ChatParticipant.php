@@ -21,7 +21,7 @@ class ChatParticipant extends BaseModel
 
     protected $guarded = ['id'];
 
-    protected $appends = ['links'];
+
 
     protected $casts = ['chat_participant_data' => 'array', 'restored_at' => 'datetime', 'enabled' => 'bool'];
 
