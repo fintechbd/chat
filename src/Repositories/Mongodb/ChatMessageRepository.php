@@ -19,7 +19,7 @@ class ChatMessageRepository extends MongodbRepository implements InterfacesChatM
     {
         $model = app(config('fintech.chat.chat_message_model', ChatMessage::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
         }
 
@@ -37,7 +37,7 @@ class ChatMessageRepository extends MongodbRepository implements InterfacesChatM
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
