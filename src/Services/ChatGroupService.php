@@ -7,7 +7,7 @@ use Fintech\Chat\Interfaces\ChatGroupRepository;
 /**
  * Class ChatGroupService
  */
-class ChatGroupService
+class ChatGroupService extends \Fintech\Core\Abstracts\Service
 {
     /**
      * ChatGroupService constructor.

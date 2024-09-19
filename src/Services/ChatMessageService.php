@@ -7,7 +7,7 @@ use Fintech\Chat\Interfaces\ChatMessageRepository;
 /**
  * Class ChatMessageService
  */
-class ChatMessageService
+class ChatMessageService extends \Fintech\Core\Abstracts\Service
 {
     /**
      * ChatMessageService constructor.
