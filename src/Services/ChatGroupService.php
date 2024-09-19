@@ -7,8 +7,10 @@ use Fintech\Chat\Interfaces\ChatGroupRepository;
 /**
  * Class ChatGroupService
  */
-class ChatGroupService extends \Fintech\Core\Abstracts\Service
+class ChatGroupService
 {
+    use \Fintech\Core\Traits\HasFindWhereSearch;
+
     /**
      * ChatGroupService constructor.
      */

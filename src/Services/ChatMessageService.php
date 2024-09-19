@@ -7,8 +7,10 @@ use Fintech\Chat\Interfaces\ChatMessageRepository;
 /**
  * Class ChatMessageService
  */
-class ChatMessageService extends \Fintech\Core\Abstracts\Service
+class ChatMessageService
 {
+    use \Fintech\Core\Traits\HasFindWhereSearch;
+
     /**
      * ChatMessageService constructor.
      */
