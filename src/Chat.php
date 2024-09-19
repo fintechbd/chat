@@ -11,25 +11,25 @@ class Chat
     /**
      * @return ChatGroupService
      */
-    public function chatGroup()
-    {
-        return app(ChatGroupService::class);
+    public function chatGroup($filters = null)
+{
+	return \singleton(ChatGroupService::class, $filters);
     }
 
     /**
      * @return ChatParticipantService
      */
-    public function chatParticipant()
-    {
-        return app(ChatParticipantService::class);
+    public function chatParticipant($filters = null)
+{
+	return \singleton(ChatParticipantService::class, $filters);
     }
 
     /**
      * @return ChatMessageService
      */
-    public function chatMessage()
-    {
-        return app(ChatMessageService::class);
+    public function chatMessage($filters = null)
+{
+	return \singleton(ChatMessageService::class, $filters);
     }
 
     //** Crud Service Method Point Do not Remove **//
