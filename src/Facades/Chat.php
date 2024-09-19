@@ -8,9 +8,9 @@ use Fintech\Chat\Services\ChatParticipantService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static ChatGroupService chatGroup()
- * @method static ChatParticipantService chatParticipant()
- * @method static ChatMessageService chatMessage()
+ * @method static \Illuminate\Contracts\Pagination\Paginator|\Illuminate\Support\Collection|ChatGroupService chatGroup(array $filters = null)
+ * @method static \Illuminate\Contracts\Pagination\Paginator|\Illuminate\Support\Collection|ChatParticipantService chatParticipant(array $filters = null)
+ * @method static \Illuminate\Contracts\Pagination\Paginator|\Illuminate\Support\Collection|ChatMessageService chatMessage(array $filters = null)
  *                                                 // Crud Service Method Point Do not Remove //
  *
  * @see \Fintech\Chat\Chat
