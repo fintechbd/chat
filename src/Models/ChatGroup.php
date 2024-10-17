@@ -3,18 +3,17 @@
 namespace Fintech\Chat\Models;
 
 use Fintech\Core\Abstracts\BaseModel;
-use Fintech\Core\Traits\AuditableTrait;
 use Fintech\Core\Traits\BlameableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class ChatGroup extends BaseModel implements HasMedia , Auditable
+class ChatGroup extends BaseModel implements Auditable, HasMedia
 {
-    use \OwenIt\Auditing\Auditable;
     use BlameableTrait;
     use InteractsWithMedia;
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
 
     /*
