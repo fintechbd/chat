@@ -4,7 +4,7 @@ namespace Fintech\Chat;
 
 use Fintech\Chat\Commands\InstallCommand;
 use Fintech\Chat\Providers\RepositoryServiceProvider;
-use Fintech\Core\Traits\RegisterPackageTrait;
+use Fintech\Core\Traits\Packages\RegisterPackageTrait;
 use Illuminate\Support\ServiceProvider;
 
 class ChatServiceProvider extends ServiceProvider
