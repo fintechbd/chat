@@ -72,7 +72,7 @@ class ChatMessageController extends Controller
             }
 
             return response()->created([
-                'message' => __('restapi::messages.resource.created', ['model' => 'Chat Message']),
+                'message' => __('core::messages.resource.created', ['model' => 'Chat Message']),
                 'id' => $chatMessage->id,
             ]);
 
@@ -138,7 +138,7 @@ class ChatMessageController extends Controller
                 throw (new UpdateOperationException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
-            return response()->updated(__('restapi::messages.resource.updated', ['model' => 'Chat Message']));
+            return response()->updated(__('core::messages.resource.updated', ['model' => 'Chat Message']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -176,7 +176,7 @@ class ChatMessageController extends Controller
                 throw (new DeleteOperationException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
-            return response()->deleted(__('restapi::messages.resource.deleted', ['model' => 'Chat Message']));
+            return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Chat Message']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -212,7 +212,7 @@ class ChatMessageController extends Controller
                 throw (new RestoreOperationException)->setModel(config('fintech.chat.chat_message_model'), $id);
             }
 
-            return response()->restored(__('restapi::messages.resource.restored', ['model' => 'Chat Message']));
+            return response()->restored(__('core::messages.resource.restored', ['model' => 'Chat Message']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -238,7 +238,7 @@ class ChatMessageController extends Controller
 
             $chatMessagePaginate = Chat::chatMessage()->export($inputs);
 
-            return response()->exported(__('restapi::messages.resource.exported', ['model' => 'Chat Message']));
+            return response()->exported(__('core::messages.resource.exported', ['model' => 'Chat Message']));
 
         } catch (Exception $exception) {
 

@@ -72,10 +72,10 @@ class ChatGroup extends BaseModel implements Auditable, HasMedia
         $primaryKey = $this->getKey();
 
         $links = [
-            'show' => action_link(route('chat.chat-groups.show', $primaryKey), __('restapi::messages.action.show'), 'get'),
-            'update' => action_link(route('chat.chat-groups.update', $primaryKey), __('restapi::messages.action.update'), 'put'),
-            'destroy' => action_link(route('chat.chat-groups.destroy', $primaryKey), __('restapi::messages.action.destroy'), 'delete'),
-            'restore' => action_link(route('chat.chat-groups.restore', $primaryKey), __('restapi::messages.action.restore'), 'post'),
+            'show' => action_link(route('chat.chat-groups.show', $primaryKey), __('core::messages.action.show'), 'get'),
+            'update' => action_link(route('chat.chat-groups.update', $primaryKey), __('core::messages.action.update'), 'put'),
+            'destroy' => action_link(route('chat.chat-groups.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
+            'restore' => action_link(route('chat.chat-groups.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
         ];
 
         if ($this->getAttribute('deleted_at') == null) {
