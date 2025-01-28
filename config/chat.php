@@ -16,7 +16,7 @@ return [
     |--------------------------------------------------------------------------
     | This setting enable the API will be available or not
     */
-    'enabled' => env('PACKAGE_Chat_ENABLED', true),
+    'enabled' => env('CHAT_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------
