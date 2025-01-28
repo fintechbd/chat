@@ -29,7 +29,7 @@ if (Config::get('fintech.chat.enabled')) {
             Route::apiResource('chat-messages', ChatMessageController::class);
             //         Route::post('chat-messages/{chat_message}/restore', [ChatMessageController::class, 'restore'])->name('chat-messages.restore');
 
-            //DO NOT REMOVE THIS LINE//
+            // DO NOT REMOVE THIS LINE//
         });
     });
 }

@@ -23,6 +23,6 @@ class Chat
         return \singleton(ChatMessageService::class, $filters);
     }
 
-    //** Crud Service Method Point Do not Remove **//
+    // ** Crud Service Method Point Do not Remove **//
 
 }
