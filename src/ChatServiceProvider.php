@@ -36,7 +36,7 @@ class ChatServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/chat.php' => config_path('fintech/chat.php'),
-        ]);
+        ], 'fintech-chat-config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -44,7 +44,7 @@ class ChatServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../lang' => $this->app->langPath('vendor/chat'),
-        ]);
+        ], 'fintech-chat-lang');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'chat');
 
@@ -52,7 +52,7 @@ class ChatServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/chat'),
-        ]);
+        ], 'fintech-chat-views');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
