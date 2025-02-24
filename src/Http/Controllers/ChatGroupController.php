@@ -102,7 +102,7 @@ class ChatGroupController extends Controller
 
             return new ChatGroupResource($chatGroup);
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -136,7 +136,7 @@ class ChatGroupController extends Controller
 
             return response()->updated(__('core::messages.resource.updated', ['model' => 'Chat Group']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -170,7 +170,7 @@ class ChatGroupController extends Controller
 
             return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Chat Group']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -202,7 +202,7 @@ class ChatGroupController extends Controller
 
             return response()->restored(__('core::messages.resource.restored', ['model' => 'Chat Group']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
